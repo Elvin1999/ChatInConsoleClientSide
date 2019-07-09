@@ -4,6 +4,8 @@ using System.Text;
 using System;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Drawing;
+using System.IO;
 
 namespace Socket_Programming_Client_Side
 {
@@ -16,9 +18,9 @@ namespace Socket_Programming_Client_Side
             Name = Console.ReadLine();
             #region ClientMessage
             Console.WriteLine("======================CLIENT====================");
-            string ipAddress = "172.20.28.56"; // server ip
+            string ipAddress = "10.1.16.38"; // server ip
             int port = 1031;
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[11000000];
             IPEndPoint endp = new IPEndPoint(IPAddress.Parse(ipAddress), port);
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             while (!socket.Connected)
@@ -51,7 +53,15 @@ namespace Socket_Programming_Client_Side
                     int length = socket.Receive(buffer);
                     if (length != 0)
                     {
-                        Console.WriteLine("Server 1: " + Encoding.ASCII.GetString(buffer, 0, length));
+                        ImageConverter ic = new ImageConverter();
+
+                        Image img = (Image)ic.ConvertFrom(buffer);
+                        
+                        
+                        Bitmap bitmap1 = new Bitmap(img);
+                        bitmap1.Save(@"C:\Users\Jama_yw17\source\repos\ChatInConsoleClientSide2\Socket Programming Client Side\bin\Debug\image.png");
+
+                        //Console.WriteLine("Server 1: " + Encoding.ASCII.GetString(buffer, 0, length));
                     }
                 }
             });
