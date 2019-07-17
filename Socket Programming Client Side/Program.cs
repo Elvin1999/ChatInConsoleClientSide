@@ -18,7 +18,7 @@ namespace Socket_Programming_Client_Side
             Name = Console.ReadLine();
             #region ClientMessage
             Console.WriteLine("======================CLIENT====================");
-            string ipAddress = "10.1.16.38"; // server ip
+            string ipAddress = "192.168.1.103"; // server ip
             int port = 1031;
             byte[] buffer = new byte[11000000];
             IPEndPoint endp = new IPEndPoint(IPAddress.Parse(ipAddress), port);
@@ -53,15 +53,15 @@ namespace Socket_Programming_Client_Side
                     int length = socket.Receive(buffer);
                     if (length != 0)
                     {
-                        ImageConverter ic = new ImageConverter();
+                        //ImageConverter ic = new ImageConverter();
 
-                        Image img = (Image)ic.ConvertFrom(buffer);
+                        //Image img = (Image)ic.ConvertFrom(buffer);
                         
                         
-                        Bitmap bitmap1 = new Bitmap(img);
-                        bitmap1.Save(@"C:\Users\Jama_yw17\source\repos\ChatInConsoleClientSide2\Socket Programming Client Side\bin\Debug\image.png");
+                        //Bitmap bitmap1 = new Bitmap(img);
+                        //bitmap1.Save(@"C:\Users\Jama_yw17\source\repos\ChatInConsoleClientSide2\Socket Programming Client Side\bin\Debug\image.png");
 
-                        //Console.WriteLine("Server 1: " + Encoding.ASCII.GetString(buffer, 0, length));
+                        Console.WriteLine("Server 1: " + Encoding.ASCII.GetString(buffer, 0, length));
                     }
                 }
             });
