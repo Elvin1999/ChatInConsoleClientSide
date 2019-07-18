@@ -64,7 +64,7 @@ namespace Socket_Programming_Client_Side
                         Console.WriteLine("Server 1: " + Encoding.ASCII.GetString(buffer, 0, length));
                     }
                 }
-            });
+            });  
             Task.WaitAll(senderTask, receiverTask);
             #endregion
            
